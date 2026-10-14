@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWIGGY GNU::8085 - Hotel Royal Mumbai</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+  SWIGGY GNU::8085 <span>HOTEL ROYAL MUMBAI - 18008 - 8085 Processor</span>
+</div>
+
+<div class="banner">
+  <span class="tag">[GNU SIM8085 DINER KERNEL]</span>
+  <b>CALL=Book Table</b> | <b>PUSH=Order Food</b> | <b>SP=Cart Count</b> | <b>HLT=Place Order</b>
+  <br>Swiggy-inspired Diner Management System Using GNU Sim8085 Concepts
+</div>
+
+<div class="registers">
+  <div>ACC: <span id="acc">00H</span></div>
+  <div>PC: <span id="pc">2000H</span></div>
+  <div>SP: <span id="sp-reg">2110H</span></div>
+  <div>HL (2050H): <span id="hl">--</span></div>
+  <div>SP Count (2300H): <span id="spc">0</span></div>
+  <div>Bill (2200H): Rs <span id="bill">0</span></div>
+  <div>Z Flag (2301H): <span id="z">0</span></div>
+</div>
+
+<div class="main">
+  <div class="left">
+    <h3>Table Memory [0x2000H] - 6 Tables</h3>
+    <div class="table-grid" id="tables"></div>
+
+    <h3>GNU Console [0x0000H]</h3>
+    <div id="console">> LXI SP,2110H - Stack Initialized<br>> LXI H,2000H - Table Memory Initialized<br></div>
+  </div>
+
+  <div class="middle">
+    <h3>Food Stack - PUSH Operation</h3>
+    <div class="food-card">
+      <img src="https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=200" alt="Burger">
+      <div>
+        <b>Assembly Burger</b><br>
+        <small>Code: 01H | Price: Rs 150 | ADI 96H</small>
+        <button onclick="order(1,'Burger',150)">ADD - PUSH</button>
+      </div>
+    </div>
+    <div class="food-card">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Pizza">
+      <div>
+        <b>Byte Pizza</b><br>
+        <small>Code: 02H | Price: Rs 350 | ADI 5EH+01H</small>
+        <button onclick="order(2,'Pizza',350)">ADD - PUSH</button>
+      </div>
+    </div>
+    <div class="food-card">
+      <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=200" alt="Cola">
+      <div>
+        <b>Debug Cola</b><br>
+        <small>Code: 03H | Price: Rs 50 | ADI 32H</small>
+        <button onclick="order(3,'Cola',50)">ADD - PUSH</button>
+      </div>
+    </div>
+    <div class="food-card">
+      <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=200" alt="Biryani">
+      <div>
+        <b>Kernel Biryani</b><br>
+        <small>Code: 04H | Price: Rs 250 | ADI FAH</small>
+        <button onclick="order(4,'Biryani',250)">ADD - PUSH</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <h3>Memory Stack [2100H]</h3>
+    <div>SP Count: <span id="cart-sp">0</span></div>
+    <div id="cart-list">Cart Empty</div>
+    <hr>
+    <div class="total">Total Bill [2200H]: Rs <span id="total">0</span></div>
+    <button class="hlt-btn" onclick="hlt()">PLACE ORDER - HLT</button>
+    <br><br>
+    <small>
+      <b>Memory Map:</b><br>
+      2000H-2005H: Table Status<br>
+      2050H: HL Reg (Selected Table)<br>
+      2100H: Food Stack<br>
+      2200H: Total Bill<br>
+      2300H: SP Count<br>
+      2301H: Z Flag
+    </small>
+  </div>
+</div>
+
+<footer>
+  Live: https://riyachavan935-ai.github.io/Student-/ |
+  GitHub: riyachavan935-ai/Student- |
+  Vercel: v0-project-delta-seven-35.vercel.app |
+  GNU: 2000H=Table, 2050H=HL, 2200H=Bill, 2300H=SP
+</footer>
+
+<script src="script.js"></script>
+</body>
+  </html>
